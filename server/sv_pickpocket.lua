@@ -3,7 +3,7 @@ local Server = lib.load('server/sv_config')
 local tempCd = {}
 
 AddEventHandler('entityRemoved', function(ent)
-    if GetEntityType(ent) ~= 1 or not Entity(ent).state.pickPocketed then return end
+    if not DoesEntityExist(ent) or GetEntityType(ent) ~= 1 or not Entity(ent).state.pickPocketed then return end
     Entity(ent).state:set('pickPocketed', nil, true) -- Do I need to do this or do statebags get set to nil when the entity is removed? idk.
 end)
 
